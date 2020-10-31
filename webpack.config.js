@@ -4,10 +4,10 @@ const SRC_FILE = path.resolve(__dirname, 'client', 'src', 'index.js');
 const OUT_FILE = path.resolve(__dirname, 'client', 'dist');
 
 module.exports = {
-  entry: SRC_FILE,
+  entry: ["@babel/polyfill", SRC_FILE],
   output: {
-    path: OUT_DIR,
-    filename: 'bundle.js'
+    path: OUT_FILE,
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -15,10 +15,10 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
-      }
-    ]
+          loader: 'babel-loader',
+        },
+      },
+    ],
   },
-  mode: 'development'
+  mode: 'development',
 };
