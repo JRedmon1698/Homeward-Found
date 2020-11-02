@@ -1,31 +1,43 @@
-const sampleIngredients = [
+const sampleData = {
+
+'ingredients': [
     {
-      eggs: 2,
+      name: 'eggs',
+      amount: 2
     },
     {
-      milk: 1,
+      name: 'milk',
+      amount:1
     },
     {
-      ground_beef: 1,
+      name: 'groundbeef',
+      amount: 1
     },
     {
-      tomato_sauce: 2,
+      name: 'tomato sauce',
+      amount: 1
     },
     {
-      noodles: 1,
+      name: 'noodles',
+      amount: 1
     }
-  ];
+  ],
 
-const sampleRecipes = [
-  {
-    spaghetti: [noodles, tomato_sauce, ground_beef],
-  },
-  {
-    chili: [beans, tomato_sauce, ground_beef, onions, chili_peppers],
-  },
-  {
-    grilled_cheese: [bread, butter, cheese],
-  },
-];
 
-module.exports = { sampleIngredients, sampleRecipes };
+ 'recipes': [
+  {
+    name: 'spahgetti',
+    ingredients: ['noodles', 'tomato_sauce', 'ground_beef'],
+  },
+  {
+    name: 'chili',
+    ingredients: ['beans', 'tomato_sauce', 'ground_beef', 'onions', 'chili_peppers'],
+  },
+  {
+    name: 'grilled cheese',
+    ingredients: ['bread', 'butter', 'cheese'],
+  },
+]
+}
+
+module.exports = sampleData;
