@@ -2,22 +2,27 @@ const sampleData = {
 
 'ingredients': [
     {
+      id: 1,
       name: 'eggs',
       amount: 2
     },
     {
+      id: 2,
       name: 'milk',
       amount:1
     },
     {
+      id: 3,
       name: 'ground beef',
       amount: 1
     },
     {
+      id: 4,
       name: 'tomato sauce',
       amount: 1
     },
     {
+      id: 5,
       name: 'noodles',
       amount: 1
     }
