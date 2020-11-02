@@ -10,7 +10,7 @@ const sampleData = {
       amount:1
     },
     {
-      name: 'groundbeef',
+      name: 'ground beef',
       amount: 1
     },
     {
@@ -26,17 +26,29 @@ const sampleData = {
 
  'recipes': [
   {
-    name: 'spahgetti',
-    ingredients: ['noodles', 'tomato_sauce', 'ground_beef'],
+    id: 1,
+    title: 'spahgetti',
+    image: 'https://spoonacular.com/recipeImages/272415-312x231.jpg',
+    imageType: 'jpg',
+    usedIngredientCount: 3,
+    missedIngredientCount: 0,
+    missedIngredients: [],
+    usedIngredients: ['noodles', 'tomato sauce', 'ground beef'],
+    unusedIngredients: ['milk', 'eggs'],
+    likes: 0
   },
   {
-    name: 'chili',
-    ingredients: ['beans', 'tomato_sauce', 'ground_beef', 'onions', 'chili_peppers'],
+    id: 2,
+    title: 'chili',
+    image: 'https://spoonacular.com/recipeImages/272415-312x231.jpg',
+    usedIngredientCount: 4,
+    missedIngredientCount: 0,
+    missedIngredients: [],
+    usedIngredients: ['beans', 'tomato sauce', 'ground beef', 'onions', 'chili peppers'],
+    unusedIngredients: ['milk', 'eggs'],
+    likes: 0
   },
-  {
-    name: 'grilled cheese',
-    ingredients: ['bread', 'butter', 'cheese'],
-  },
+
 ]
 }
 

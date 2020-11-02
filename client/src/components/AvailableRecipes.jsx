@@ -1,6 +1,8 @@
 import React from 'react';
 
-const AvailableRecipes = ({ recipes }) => (
+const AvailableRecipes = ({ availRecipes }) => {
+
+  return (
   <div>
     <h2>Available Recipes</h2>
     <ul>
@@ -13,6 +15,7 @@ const AvailableRecipes = ({ recipes }) => (
     })}
     </ul>
   </div>
-)
+  )
+}
 
 export default AvailableRecipes;
