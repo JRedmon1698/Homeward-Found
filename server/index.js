@@ -4,6 +4,8 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const axios = require('axios');
 const key = require('../spoonacular.config.js');
+const Ingredient = require('../database/Ingredients.js');
+const db = require('../database/index.js');
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../client/dist')));
@@ -39,6 +41,14 @@ app.get('/api/recipe/details/:id', (req, res) => {
     .then(({ data }) => res.send(data))
     .catch((err) => console.log('err'));
 });
+
+app.get('/api/ingredient', (req, res) => {
+  // console.log(Ingredient);
+  Ingredient.find()
+    .then((data) => res.send(data))
+    .catch((err) => console.log(err)); 
+})
+
 
 
 app.listen(PORT, () => {
