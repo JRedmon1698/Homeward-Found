@@ -4,12 +4,12 @@ const Ingredient = ({ ingredient }) => {
 
   const useIngredient = () => {
     ingredient.amount -= 1;
-    
+
   }
 
   return (
     <div>
-      {ingredient.name}: {ingredient.amount}
+      <span>{ingredient.name}: {ingredient.amount} {ingredient.measure}</span>
     </div>
   )
 

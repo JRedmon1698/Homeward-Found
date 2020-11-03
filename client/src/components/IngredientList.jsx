@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import Ingredient from './Ingredient.jsx';
 
 function IngredientList({ availIngredients, saveNewIngredient }) {
@@ -8,21 +9,22 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
   const [newIngredientMeasure, setNewIngredientMeasure] = useState('');
 
   const handleSubmit = (ingredient) => {
-    // setNewIngredient(ingredient);
     saveNewIngredient(ingredient);
-    // alert(newIngredient.name);
   }
 
   const handleNameChange = (e) => {
     setNewIngredientName(e.target.value);
+    e.preventDefault();
   }
 
   const handleAmountChange = (e) => {
     setNewIngredientAmount(e.target.value);
+    e.preventDefault();
   }
 
   const handleMeasureChange = (e) => {
     setNewIngredientMeasure(e.target.value);
+    e.preventDefault();
   }
 
   return (
@@ -35,7 +37,7 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
           <Ingredient ingredient={ingredient} key={index} />
         ))}
       </ul>
-          <span>
+          <form>
       <h4>Add ingredient</h4>
       <div>
         <p>Name</p>
@@ -47,26 +49,31 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
       </div>
       <div>
         <p>Measurement (if not applicable, input 'null')</p>
-        <input type='text' name='measure' onChange={handleMeasureChange}></input>
+        <input type='text' name='measure' placeholder='lbs., gallons, boxes, oz., etc.' onChange={handleMeasureChange}></input>
       </div>
-      <button onClick={() => {
+      <SaveButton onClick={(e) => {
         handleSubmit({
           newIngredientName,
           newIngredientAmount,
           newIngredientMeasure
-        })}}>Save</button>
-      </span>
+        });
+        }}>Save</SaveButton>
+      </form>
       </div >
   )
 
 }
 
+const SaveButton = styled.button`
+  border: none;
+  color: white;
+  background-color: blue;
+  border-radius: 3px;
+  padding: 10px 20px 10px 20px;
+  margin-top: 10px;
+  :hover {
+    cursor: pointer;
+  }
+`;
 
 export default IngredientList;
-
-
-
-/*
-</div>
-); */
-// }

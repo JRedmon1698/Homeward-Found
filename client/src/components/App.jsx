@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 import sampleData from '../../../database/sampleData.js';
+import img from '../images/pantry.jpg';
 import IngredientList from './IngredientList.jsx';
 import AvailableRecipes from './AvailableRecipes.jsx';
 import RecipeDetails from './RecipeDetails.jsx';
 
 function App() {
   const [availIngredients, setAvailIngredients] = useState(sampleData.ingredients);
-  const [availRecipes, setAvailRecipes] = useState([]);
+  const [availRecipes, setAvailRecipes] = useState(sampleData.recipes);
   const [recipeDetails, setRecipeDetails] = useState([]);
   const [detailsView, setDetailsView] = useState(false);
 
@@ -18,6 +20,20 @@ function App() {
       measure: ingredient.newIngredientMeasure
     })
       .then(({ data }) => console.log('saved', data))
+      .catch((err) => console.log(err));
+  }
+
+  const getAvailIngredients = () => {
+    axios.get('/api/ingredients')
+      .then(({ data }) => {
+        let ingredients = [];
+        for (let i = 0; i < data.length; i += 1) {
+          if (data[i].name !== '' && data[i].amount !== '' && data[i].measure !== '') {
+            ingredients.push(data[i]);
+          }
+        }
+        setAvailIngredients(ingredients);
+      })
       .catch((err) => console.log(err));
   }
 
@@ -39,25 +55,60 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  // useEffect(() => {
+  //   getAvailRecipes(availIngredients);
+  // }, [availIngredients]);
+
   useEffect(() => {
-    getAvailRecipes(availIngredients);
+    getAvailIngredients()
   }, [availIngredients]);
 
 
   if (detailsView === false) {
   return (
+    // <Wrapper>
     <div>
-      <h1>Homeward Found</h1>
-      <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient} />
+      <TitleWrapper>
+        Homeward Found
+      </TitleWrapper>
+      <AvailableIngredientsWrapper>
+        <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient} />
+      </AvailableIngredientsWrapper>
+    <AvailableRecipesWrapper>
       <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}
-     recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
+        recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
+    </AvailableRecipesWrapper>
     </div>
+    // {/* </Wrapper> */}
   );
   } else {
     return (
+      <Wrapper>
       <RecipeDetails recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
+      </Wrapper>
     )
   }
 }
+
+const TitleWrapper = styled.div`
+  background-image: url(${img});
+  padding-bottom: 500px;
+  font-size: 90px;
+  z-index: 9;
+`;
+
+const Wrapper = styled.div`
+  font-family: Georgia;
+`;
+
+const AvailableRecipesWrapper = styled.div`
+  position: relative;
+  float: right;
+`;
+
+const AvailableIngredientsWrapper = styled.div`
+  position: relative;
+  float: left;
+`;
 
 export default App;

@@ -23,13 +23,13 @@ const sampleData = {
       id: 4,
       name: 'tomato sauce',
       amount: 1,
-      mrsdutr: 'cans'
+      measure: 'cans'
     },
     {
       id: 5,
       name: 'noodles',
       amount: 1,
-      meaure: 'boxes'
+      measure: 'boxes'
     }
   ],
 
