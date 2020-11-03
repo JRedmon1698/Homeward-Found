@@ -42,14 +42,26 @@ app.get('/api/recipe/details/:id', (req, res) => {
     .catch((err) => console.log('err'));
 });
 
-app.get('/api/ingredient', (req, res) => {
+app.get('/api/ingredients', (req, res) => {
   // console.log(Ingredient);
   Ingredient.find()
     .then((data) => res.send(data))
     .catch((err) => console.log(err)); 
 })
 
+app.post('/api/ingredients', (req, res) => {
+  const { name } = req.body;
+  const { amount } = req.body;
+  const  { measure } = req.body;
 
+  Ingredient.create({
+    name,
+    amount,
+    measure
+  })
+    .then((ingredient) => res.send(ingredient))
+    .catch((err) => res.send(err));
+})
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

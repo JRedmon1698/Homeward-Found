@@ -3,7 +3,9 @@ const db = require('./index.js');
 
 const ingredientSchema = new mongoose.Schema({
   id: Number,
-  name: String
+  name: String,
+  amount: Number,
+  measure: String
 });
 
 // const recipeSchema = new mongoose.Schema({

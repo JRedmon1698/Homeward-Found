@@ -11,6 +11,16 @@ function App() {
   const [recipeDetails, setRecipeDetails] = useState([]);
   const [detailsView, setDetailsView] = useState(false);
 
+  const saveNewIngredient = (ingredient) => {
+    axios.post('/api/ingredients', {
+      name: ingredient.newIngredientName,
+      amount: ingredient.newIngredientAmount,
+      measure: ingredient.newIngredientMeasure
+    })
+      .then(({ data }) => console.log('saved', data))
+      .catch((err) => console.log(err));
+  }
+
   const getAvailRecipes = (ingredients) => {
     let ingredientStr = '';
     ingredients.map((ingredient, i) => {
@@ -38,7 +48,7 @@ function App() {
   return (
     <div>
       <h1>Homeward Found</h1>
-      <IngredientList availIngredients={availIngredients}/>
+      <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient} />
       <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}
      recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
     </div>

@@ -4,27 +4,32 @@ const sampleData = {
     {
       id: 1,
       name: 'eggs',
-      amount: 2
+      amount: 2,
+      measure: null
     },
     {
       id: 2,
       name: 'milk',
-      amount:1
+      amount: 1,
+      measure: 'gallons'
     },
     {
       id: 3,
       name: 'ground beef',
-      amount: 1
+      amount: 1,
+      measure: 'lbs.'
     },
     {
       id: 4,
       name: 'tomato sauce',
-      amount: 1
+      amount: 1,
+      mrsdutr: 'cans'
     },
     {
       id: 5,
       name: 'noodles',
-      amount: 1
+      amount: 1,
+      meaure: 'boxes'
     }
   ],
 
