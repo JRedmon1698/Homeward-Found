@@ -6,7 +6,7 @@ const AvailableRecipes = ({ availRecipes, getRecipeDetails, setDetailsView }) =>
 
     return (
     <div>
-      <h2>Available Recipes Based on Your  Current Ingredient Inventory</h2>
+      <h2>Available Recipes Based on Your Current Ingredient Inventory</h2>
       <h4>Click on image to get full recipe</h4>
       <ul>
       {availRecipes.map((recipe, index) => {

@@ -27,9 +27,6 @@ function App() {
     axios.get(`/api/recipe/details/${id}`)
       .then(({ data }) => setRecipeDetails(data[0].steps))
       .catch((err) => console.log(err));
-    // setDetailsView(true);
-    // setCurrentRecipe(recipe);
-    // console.log(recipeDetails);
   }
 
   useEffect(() => {
