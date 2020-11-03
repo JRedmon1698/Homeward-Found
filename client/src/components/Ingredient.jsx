@@ -2,7 +2,7 @@ import React from 'react';
 
 const Ingredient = ({ ingredient }) => {
   return (
-    <div>{console.log('ingredient', ingredient)}
+    <div>
       {ingredient.name}: {ingredient.amount}
     </div>
   )

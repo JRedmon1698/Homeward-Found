@@ -2,15 +2,15 @@ import React, { useState, setState } from 'react';
 import PropTypes from 'prop-types';
 import Ingredient from './Ingredient.jsx';
 
-const IngredientList = ({ ingredients }) => {
+const IngredientList = ({ availIngredients }) => {
 
   return (
     <div>
-      <h2>{console.log(ingredients)}
+      <h2>
       Current Ingredient Stock
       </h2>
       <ul>
-        {ingredients.map((ingredient, index) => (         
+        {availIngredients.map((ingredient, index) => (         
             <Ingredient ingredient={ingredient} key={index}/>
         ))}
       </ul>

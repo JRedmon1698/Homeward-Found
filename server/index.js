@@ -32,6 +32,15 @@ app.get('/api/ingredients/:ingredient', (req, res) => {
   .catch((err) => console.log(err));
 });
 
+app.get('/api/recipe/details/:id', (req, res) => {
+  const { id } = req.params;
+  let reqUrl = `${url}/recipes/${id}/analyzedInstructions?apiKey=${key}`
+  axios(reqUrl)
+    .then(({ data }) => res.send(data))
+    .catch((err) => console.log('err'));
+});
+
+
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
