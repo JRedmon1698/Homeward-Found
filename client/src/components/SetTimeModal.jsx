@@ -2,17 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const SetTimeModal = ({ 
-  ingredient, showModal, setShowModal, updateIngredientTimeLine 
+  ingredient, showTimeModal, setShowTimeModal, updateIngredientTimeLine 
 }) => {
   const [ingredientNumber, setIngredientNumber] = useState(null);
   const [newQualifier, setNewQualifier] = useState(null);
   const [newAmount, setNewAmount] = useState(null);
 
-  const test = () => {
-    console.log(ingredient);
-  }
-
-  if (!showModal) {
+  if (!showTimeModal) {
     return null;
   }
   return (
@@ -30,10 +26,9 @@ const SetTimeModal = ({
         </Example>
         <Save onClick={() => {
           updateIngredientTimeLine(ingredient._id, newQualifier, newAmount);
-          test();
-          setShowModal(false);
+          setShowTimeModal(false);
         }}>Save</Save> <Cancel onClick={() => {
-          setShowModal(false);
+          setShowTimeModal(false);
         }}>Cancel</Cancel>
       </Modal>
     </div>

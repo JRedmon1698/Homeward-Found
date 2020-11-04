@@ -1,22 +1,26 @@
 import React, { useState } from 'react';
 import AccessAlarmsSharpIcon from '@material-ui/icons/AccessAlarmsSharp';
+import BuildIcon from '@material-ui/icons/Build';
 import SetTimeModal from './SetTimeModal.jsx';
 import styled from 'styled-components';
 
 const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showTimeModal, setShowTimeModal] = useState(false);
 
     return (
       <div>
         <span>
           {ingredient.name}: {ingredient.amount} {ingredient.measure}
           <AccessAlarmsSharpIcon color='primary' onClick={() => {
-            setShowModal(true);
+            setShowTimeModal(true);
           }}></AccessAlarmsSharpIcon>
+          <BuildIcon color='primary' onClick={() => {
+
+          }}></BuildIcon>
         </span>
-        <SetTimeModal ingredient={ingredient} showModal={showModal} 
-        setShowModal={setShowModal} updateIngredientTimeLine={updateIngredientTimeLine} />
-        {showModal ? <PageMask /> : null}
+        <SetTimeModal ingredient={ingredient} showTimeModal={showTimeModal} 
+        setShowTimeModal={setShowTimeModal} updateIngredientTimeLine={updateIngredientTimeLine} />
+        {showTimeModal ? <PageMask /> : null}
       </div>
     )
 }

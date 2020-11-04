@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Ingredient from './Ingredient.jsx';
 import shelves from '../images/emptyshelves.png';
 
-
 function IngredientList({ availIngredients, saveNewIngredient, updateIngredientTimeLine }) {
   const [newIngredientName, setNewIngredientName] = useState('');
   const [newIngredientAmount, setNewIngredientAmount] = useState(null);
@@ -36,7 +35,8 @@ function IngredientList({ availIngredients, saveNewIngredient, updateIngredientT
       Current Ingredient Stock
       </h2>
       <ClockParagraph>
-        <p>Click on clock to set usage timeframe</p>
+        <p>Click on clock to set usage timeframe, 
+          or click on wrench to update ingredient count manually</p>
       </ClockParagraph>
       </AvailableTitle>
       <AvailableIngredientsWrapper>
