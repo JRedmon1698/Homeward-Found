@@ -1,21 +1,56 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
-const SetTimeModal = ({ ingredient, showModal, setShowModal }) => {
+const SetTimeModal = ({ 
+  ingredient, showModal, setShowModal, updateIngredientTimeLine 
+}) => {
+  const [ingredientNumber, setIngredientNumber] = useState(null);
+  const [newQualifier, setNewQualifier] = useState(null);
+  const [newAmount, setNewAmount] = useState(null);
+
+  const test = () => {
+    console.log(ingredient);
+  }
+
   if (!showModal) {
     return null;
   }
   return (
     <div>
       <Modal>
-      I use <Quantity></Quantity> {ingredient.name} every <Quantity></Quantity> <Time></Time>.
+      I use <Quantity onChange={(e) => {
+        setIngredientNumber(e.target.value);
+      }}></Quantity> {ingredient.name} {ingredient.measure} every <Quantity onChange={(e) => {
+        setNewAmount(e.target.value);
+      }}></Quantity> <Time onChange={(e) => {
+        setNewQualifier(e.target.value);
+      }}></Time>.
       <Example>
-        Example: I use 4 {ingredient.name} every 1 week.
+        Example: I use 4 {ingredient.name} {ingredient.measure} every 1 week.
         </Example>
+        <Save onClick={() => {
+          updateIngredientTimeLine(ingredient._id, newQualifier, newAmount);
+          test();
+          setShowModal(false);
+        }}>Save</Save> <Cancel onClick={() => {
+          setShowModal(false);
+        }}>Cancel</Cancel>
       </Modal>
     </div>
   );
 }
+
+const Save = styled.button`
+  border-radius: 7px;
+  background-color: green;
+  cursor: pointer;
+`;
+
+const Cancel = styled.button`
+  border-radius: 7px;
+  background-color: red;
+  cursor: pointer;
+`;
 
 const Example = styled.div`
   font-style: italic;

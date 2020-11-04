@@ -5,7 +5,11 @@ const ingredientSchema = new mongoose.Schema({
   id: Number,
   name: String,
   amount: Number,
-  measure: String
+  measure: String,
+  timeLine: {
+    qualifier: String,
+    amount: Number
+  }
 });
 
 // const recipeSchema = new mongoose.Schema({

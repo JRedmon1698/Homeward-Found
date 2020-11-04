@@ -55,6 +55,18 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  const updateIngredientTimeLine = (id, qual, amt) => {
+    const options = {
+      timeLine: {
+        qualifier: qual,
+        amount: amt
+      }
+    }
+    axios.patch(`/api/ingredients/${id}`, options)
+      .then((data) => console.log(data, ' saved'))
+      .catch((err) => console.log(err));
+  }
+
   // useEffect(() => {
   //   getAvailRecipes(availIngredients);
   // }, [availIngredients]);
@@ -72,7 +84,8 @@ function App() {
       <TitleWrapper>
       </TitleWrapper>
       <AvailableIngredientsWrapper>
-        <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient} />
+        <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient}
+        updateIngredientTimeLine={updateIngredientTimeLine} />
       </AvailableIngredientsWrapper>
     <AvailableRecipesWrapper>
       <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}

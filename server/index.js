@@ -53,7 +53,6 @@ app.post('/api/ingredients', (req, res) => {
   const { name } = req.body;
   const { amount } = req.body;
   const  { measure } = req.body;
-
   Ingredient.create({
     name,
     amount,
@@ -61,7 +60,24 @@ app.post('/api/ingredients', (req, res) => {
   })
     .then((ingredient) => res.send(ingredient))
     .catch((err) => res.send(err));
-})
+});
+
+app.patch('/api/ingredients/:id', (req, res) => {
+  const { id } = req.params;
+  const { qualifier } = req.body.timeLine;
+  const { amount } = req.body.timeLine;
+  const options = {
+    $set: {
+      timeLine: {
+        qualifier,
+        amount 
+      }
+    }
+  };
+  Ingredient.findByIdAndUpdate(id, options, { new: true })
+    .then((addition) => res.send(addition))
+    .catch((err) => res.send(err));
+});
 
 app.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);

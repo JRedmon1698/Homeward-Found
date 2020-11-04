@@ -5,7 +5,7 @@ import Ingredient from './Ingredient.jsx';
 import shelves from '../images/emptyshelves.png';
 
 
-function IngredientList({ availIngredients, saveNewIngredient }) {
+function IngredientList({ availIngredients, saveNewIngredient, updateIngredientTimeLine }) {
   const [newIngredientName, setNewIngredientName] = useState('');
   const [newIngredientAmount, setNewIngredientAmount] = useState(null);
   const [newIngredientMeasure, setNewIngredientMeasure] = useState('');
@@ -42,7 +42,8 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
       <AvailableIngredientsWrapper>
       <ul>
         {availIngredients.map((ingredient, index) => (
-          <Ingredient ingredient={ingredient} key={index} />
+          <Ingredient ingredient={ingredient} key={index} 
+          updateIngredientTimeLine={updateIngredientTimeLine}/>
         ))}
       </ul>
       </AvailableIngredientsWrapper>

@@ -3,7 +3,7 @@ import AccessAlarmsSharpIcon from '@material-ui/icons/AccessAlarmsSharp';
 import SetTimeModal from './SetTimeModal.jsx';
 import styled from 'styled-components';
 
-const Ingredient = ({ ingredient }) => {
+const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
   const [showModal, setShowModal] = useState(false);
 
     return (
@@ -15,7 +15,7 @@ const Ingredient = ({ ingredient }) => {
           }}></AccessAlarmsSharpIcon>
         </span>
         <SetTimeModal ingredient={ingredient} showModal={showModal} 
-        setShowModal={setShowModal} />
+        setShowModal={setShowModal} updateIngredientTimeLine={updateIngredientTimeLine} />
         {showModal ? <PageMask /> : null}
       </div>
     )
