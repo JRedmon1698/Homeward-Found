@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import AccessAlarmsSharpIcon from '@material-ui/icons/AccessAlarmsSharp';
 import BuildIcon from '@material-ui/icons/Build';
 import SetTimeModal from './SetTimeModal.jsx';
+import ManualUpdateModal from './ManualUpdateModal.jsx';
 import styled from 'styled-components';
 
 const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
   const [showTimeModal, setShowTimeModal] = useState(false);
+  const [showManualModal, setShowManualModal] = useState(false);
 
     return (
       <div>
@@ -15,12 +17,15 @@ const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
             setShowTimeModal(true);
           }}></AccessAlarmsSharpIcon>
           <BuildIcon color='primary' onClick={() => {
-
+            setShowManualModal(true);
           }}></BuildIcon>
         </span>
         <SetTimeModal ingredient={ingredient} showTimeModal={showTimeModal} 
         setShowTimeModal={setShowTimeModal} updateIngredientTimeLine={updateIngredientTimeLine} />
         {showTimeModal ? <PageMask /> : null}
+        <ManualUpdateModal showManualModal={showManualModal} setShowManualModal={setShowManualModal}
+        ingredient={ingredient} />
+        {showManualModal ? <PageMask /> : null}
       </div>
     )
 }
