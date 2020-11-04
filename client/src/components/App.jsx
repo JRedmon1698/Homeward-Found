@@ -66,10 +66,10 @@ function App() {
 
   if (detailsView === false) {
   return (
-    // <Wrapper>
+      <Wrapper>
     <div>
+        <Title>Homeward Found</Title>
       <TitleWrapper>
-        Homeward Found
       </TitleWrapper>
       <AvailableIngredientsWrapper>
         <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient} />
@@ -79,7 +79,7 @@ function App() {
         recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
     </AvailableRecipesWrapper>
     </div>
-    // {/* </Wrapper> */}
+    </Wrapper>
   );
   } else {
     return (
@@ -92,23 +92,32 @@ function App() {
 
 const TitleWrapper = styled.div`
   background-image: url(${img});
+  background-repeat: no-repeat;
   padding-bottom: 500px;
-  font-size: 90px;
+  opacity: 60%;
+  `;
+  
+  const Title = styled.div`
   z-index: 9;
+  font-size: 90px;
+  position: absolute;
 `;
 
 const Wrapper = styled.div`
   font-family: Georgia;
+   
 `;
 
 const AvailableRecipesWrapper = styled.div`
   position: relative;
   float: right;
+  backgroun-color: linen;
 `;
 
 const AvailableIngredientsWrapper = styled.div`
   position: relative;
   float: left;
+  backgroun-color: linen;
 `;
 
 export default App;

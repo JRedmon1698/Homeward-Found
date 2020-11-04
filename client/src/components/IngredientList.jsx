@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Ingredient from './Ingredient.jsx';
+import shelves from '../images/emptyshelves.png';
+
 
 function IngredientList({ availIngredients, saveNewIngredient }) {
   const [newIngredientName, setNewIngredientName] = useState('');
@@ -29,27 +31,38 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
 
   return (
     <div>
+      <AvailableTitle>
       <h2>
       Current Ingredient Stock
       </h2>
+      <ClockParagraph>
+        <p>Click on clock to set usage timeframe</p>
+      </ClockParagraph>
+      </AvailableTitle>
+      <AvailableIngredientsWrapper>
       <ul>
         {availIngredients.map((ingredient, index) => (
           <Ingredient ingredient={ingredient} key={index} />
         ))}
       </ul>
+      </AvailableIngredientsWrapper>
           <form>
-      <h4>Add ingredient</h4>
+      <AddIngredientTitle>
+        <h4>Add ingredient</h4>
+      </AddIngredientTitle>
+      <NewIngredientWrapper>
       <div>
         <p>Name</p>
-        <input type='text' name='name' onChange={handleNameChange}></input>
+        <TextInput name='name' onChange={handleNameChange}></TextInput>
       </div>
       <div>
         <p>Amount</p>
-        <input type='text' name='amount' onChange={handleAmountChange}></input>
+        <TextInput name='amount' onChange={handleAmountChange}></TextInput>
       </div>
       <div>
         <p>Measurement (if not applicable, input 'null')</p>
-        <input type='text' name='measure' placeholder='lbs., gallons, boxes, oz., etc.' onChange={handleMeasureChange}></input>
+        <TextInput name='measure' placeholder='lbs., gallons, boxes, oz., etc.' 
+        onChange={handleMeasureChange}></TextInput>
       </div>
       <SaveButton onClick={(e) => {
         handleSubmit({
@@ -57,12 +70,46 @@ function IngredientList({ availIngredients, saveNewIngredient }) {
           newIngredientAmount,
           newIngredientMeasure
         });
-        }}>Save</SaveButton>
+      }}>Save</SaveButton>
+      </NewIngredientWrapper>
       </form>
       </div >
   )
-
 }
+
+const ClockParagraph = styled.div`
+  margin-left: 15px;
+`;
+
+const AddIngredientTitle = styled.div`
+  margin-left: 50px;
+`;
+
+const AvailableTitle = styled.div`
+  margin-left: 50px;
+  margin-top: 30px;
+`;
+
+const AvailableIngredientsWrapper = styled.div`
+  font-weight: 350px;
+  padding-bottom: 75px;
+  padding-right: 75px;
+  padding-left: 75px;
+  padding-top: 20px;
+  font-size: 20px;
+`;
+
+const NewIngredientWrapper = styled.div`
+  backgroun-color: linen;
+  margin-left: 50px;
+  border-radius: 15px;
+  padding: 20px;
+`;
+
+const TextInput = styled.input`
+  height: 30px;
+  width: 200px;
+`;
 
 const SaveButton = styled.button`
   border: none;
