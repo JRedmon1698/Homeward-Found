@@ -89,7 +89,19 @@ app.patch('/api/ingredients/amount/:id', (req, res) => {
   }
   Ingredient.findByIdAndUpdate(id, options, { new: true })
     .then((update) => res.send(update))
-    .catch((err) => console.log(err));
+    .catch((err) => res.send(err));
+});
+
+app.patch('/api/ingredients/useAmount/:id', (req, res) => {
+  const { id } = req.params;
+  const options = {
+    $inc: {
+      amount: -1
+    }
+  }
+  Ingredient.findByIdAndUpdate(id, options, { new: true })
+    .then((data) => res.send(data))
+    .catch((err) => res.send(err));
 });
 
 app.listen(PORT, () => {

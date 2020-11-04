@@ -77,6 +77,12 @@ function App() {
       .catch((err) => console.log(err));
   }
 
+  const useIngredient = (id) => {
+    axios.patch(`/api/ingredients/useAmount/${id}`, options)
+      .then((data) => console.log('Ingredient auto-used'))
+      .catch((err) => console.log(err));
+  }
+
   // useEffect(() => {
   //   getAvailRecipes(availIngredients);
   // }, [availIngredients]);
