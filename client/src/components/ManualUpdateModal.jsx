@@ -36,28 +36,32 @@ const ManualUpdateModal = ({
 const Measurement = styled.input`
   height: 15px;
   width: 100px;
+  margin-left: 5px;
 `;
 
 const Amount = styled.input`
 height: 15px;
 width: 40px;
+margin-left: 5px;
 `;
 
 const Save = styled.button`
   border-radius: 7px;
   background-color: green;
   cursor: pointer;
+  margin-right: 2px;
 `;
 
 const Cancel = styled.button`
   border-radius: 7px;
   background-color: red;
   cursor: pointer;
+  margin-left: 2px;
 `;
 
 const Modal = styled.div`
 width: 600px;
-height: 90px;
+height: 85px;
 border-radius: 5px;
 text-align: center;
 margin: auto;

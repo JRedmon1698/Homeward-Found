@@ -12,6 +12,7 @@ const AvailableRecipes = ({ availRecipes, getRecipeDetails, setDetailsView }) =>
       <SubTitle>
         <h4>Click on image to get full recipe</h4>
       </SubTitle>
+      <Clicker>
       <ul>
       {availRecipes.map((recipe, index) => {
         return (
@@ -25,9 +26,14 @@ const AvailableRecipes = ({ availRecipes, getRecipeDetails, setDetailsView }) =>
         )
       })}
       </ul>
+      </Clicker>
     </div>
     );
 }
+
+const Clicker = styled.div`
+  cursor: pointer;
+`;
 
 const TitleWrapper = styled.div`
   margin-right: 50px;

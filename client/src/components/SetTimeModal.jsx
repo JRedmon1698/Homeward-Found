@@ -39,12 +39,16 @@ const Save = styled.button`
   border-radius: 7px;
   background-color: green;
   cursor: pointer;
+  margin-right: 2px;
+  margin-bottom: 3px;
 `;
 
 const Cancel = styled.button`
   border-radius: 7px;
   background-color: red;
   cursor: pointer;
+  margin-left: 2px;
+  margin-bottom: 3px;
 `;
 
 const Example = styled.div`
@@ -66,7 +70,7 @@ const Time = styled.input`
 
 const Modal = styled.div`
 width: 500px;
-height: 50px;
+height: 60px;
 border-radius: 5px;
 text-align: center;
 margin: auto;

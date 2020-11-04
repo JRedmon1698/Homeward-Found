@@ -34,6 +34,14 @@ const Ingredient = ({
     )
 }
 
+const Clock = styled.div`
+  cursor: pointer;
+`;
+
+const Wrench = styled.div`
+  cursor: pointer;
+`;
+
 const PageMask = styled.div`
   background: rgba(0, 0, 0, 0.5);
   position: fixed;
