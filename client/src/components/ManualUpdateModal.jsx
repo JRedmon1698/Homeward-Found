@@ -14,14 +14,14 @@ const ManualUpdateModal = ({
   return (
     <div>
       <Modal>
-        Update Available Ingredient Amount
+        Update Available Ingredient Amount 
         <Amount placeholder={ingredient.amount} onChange={(e) => {
           setNewIngredientAmount(e.target.value);
-        }}></Amount>
+        }}></Amount> <br/>
         Update Available Ingredient Measurement Type
         <Measurement placeholder={ingredient.measure} onChange={(e) => {
           setNewIngredientMeasure(e.target.value);
-        }}></Measurement>
+        }}></Measurement> <br/>
         <Save onClick={() => {
           updateIngredientAmount(ingredient._id, newIngredientAmount, newIngredientMeasure);
           setShowManualModal(false);
@@ -40,7 +40,7 @@ const Measurement = styled.input`
 
 const Amount = styled.input`
 height: 15px;
-width: 20px;
+width: 40px;
 `;
 
 const Save = styled.button`
@@ -56,8 +56,8 @@ const Cancel = styled.button`
 `;
 
 const Modal = styled.div`
-width: 300px;
-height: 50px;
+width: 600px;
+height: 90px;
 border-radius: 5px;
 text-align: center;
 margin: auto;

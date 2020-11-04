@@ -5,9 +5,13 @@ import SetTimeModal from './SetTimeModal.jsx';
 import ManualUpdateModal from './ManualUpdateModal.jsx';
 import styled from 'styled-components';
 
-const Ingredient = ({ ingredient, updateIngredientTimeLine, updateIngredientAmount }) => {
+const Ingredient = ({ 
+  ingredient, updateIngredientTimeLine, updateIngredientAmount, autoUseIngredient
+}) => {
   const [showTimeModal, setShowTimeModal] = useState(false);
   const [showManualModal, setShowManualModal] = useState(false);
+
+  // autoUseIngredient(ingredient);
 
     return (
       <div>

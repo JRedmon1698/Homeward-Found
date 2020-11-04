@@ -68,6 +68,7 @@ function App() {
   }
 
   const updateIngredientAmount = (id, amt, measureType) => {
+    console.log(id, amt, measureType);
     const options = {
       amount: amt,
       measure: measureType
@@ -77,10 +78,25 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  const useIngredient = (id) => {
-    axios.patch(`/api/ingredients/useAmount/${id}`)
-      .then((data) => console.log('Ingredient auto-used'))
-      .catch((err) => console.log(err));
+  const autoUseIngredient = (ingredients) => {
+    let timeFrame;
+    for (const ingredient of ingredients) {
+      if (!ingredient.qualifier) {
+        return;
+      }
+      if (ingredient.timeLine.qualifier === 'minutes') {
+        timeFrame === ((1000 * 60 * 60) * ingredient.timeLine.amount);
+      }
+      if (!ingredient.timLine.amount) {
+        return;
+      } else {
+        setInterval(() => {
+          axios.patch(`/api/ingredients/useAmount/${ingredient.id}`)
+            .then((data) => console.log('Ingredient auto-used'))
+            .catch((err) => console.log(err));
+        }, timeFrame)
+      }
+    }
   }
 
   // useEffect(() => {
@@ -91,29 +107,33 @@ function App() {
     getAvailIngredients()
   }, [availIngredients]);
 
+  useEffect(() => {
+    autoUseIngredient(availIngredients);
+  }, [availIngredients]);
 
   if (detailsView === false) {
-  return (
+    return (
       <Wrapper>
-    <div>
-        <Title>Homeward Found</Title>
-      <TitleWrapper>
-      </TitleWrapper>
-      <AvailableIngredientsWrapper>
-        <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient}
-        updateIngredientTimeLine={updateIngredientTimeLine} updateIngredientAmount={updateIngredientAmount} />
-      </AvailableIngredientsWrapper>
-    <AvailableRecipesWrapper>
-      <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}
-        recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
-    </AvailableRecipesWrapper>
-    </div>
-    </Wrapper>
-  );
+        <div>
+          <Title>Homeward Found</Title>
+          <TitleWrapper>
+          </TitleWrapper>
+          <AvailableIngredientsWrapper>
+            <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient}
+              updateIngredientTimeLine={updateIngredientTimeLine} autoUseIngredient={autoUseIngredient}
+              updateIngredientAmount={updateIngredientAmount} />
+          </AvailableIngredientsWrapper>
+          <AvailableRecipesWrapper>
+            <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}
+              recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
+          </AvailableRecipesWrapper>
+        </div>
+      </Wrapper>
+    );
   } else {
     return (
       <Wrapper>
-      <RecipeDetails recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
+        <RecipeDetails recipeDetails={recipeDetails} detailsView={detailsView} setDetailsView={setDetailsView} />
       </Wrapper>
     )
   }
@@ -125,8 +145,8 @@ const TitleWrapper = styled.div`
   padding-bottom: 500px;
   opacity: 60%;
   `;
-  
-  const Title = styled.div`
+
+const Title = styled.div`
   z-index: 9;
   font-size: 90px;
   position: absolute;

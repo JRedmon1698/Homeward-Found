@@ -5,7 +5,7 @@ import Ingredient from './Ingredient.jsx';
 import shelves from '../images/emptyshelves.png';
 
 function IngredientList({ 
-  availIngredients, saveNewIngredient, updateIngredientTimeLine, updateIngredientAmount 
+  availIngredients, saveNewIngredient, updateIngredientTimeLine, updateIngredientAmount, autoUseIngredient 
 }) {
   const [newIngredientName, setNewIngredientName] = useState('');
   const [newIngredientAmount, setNewIngredientAmount] = useState(null);
@@ -46,7 +46,8 @@ function IngredientList({
         {availIngredients.map((ingredient, index) => (
           <Ingredient ingredient={ingredient} key={index} 
           updateIngredientTimeLine={updateIngredientTimeLine}
-          updateIngredientAmount={updateIngredientAmount} />
+          updateIngredientAmount={updateIngredientAmount} 
+          autoUseIngredient={autoUseIngredient}/>
         ))}
       </ul>
       </AvailableIngredientsWrapper>
@@ -104,10 +105,11 @@ const AvailableIngredientsWrapper = styled.div`
 `;
 
 const NewIngredientWrapper = styled.div`
-  backgroun-color: linen;
+  backgroun-color: grey;
   margin-left: 50px;
   border-radius: 15px;
   padding: 20px;
+  z-radius: 10px;
 `;
 
 const TextInput = styled.input`
