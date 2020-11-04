@@ -62,8 +62,18 @@ function App() {
         amount: amt
       }
     }
-    axios.patch(`/api/ingredients/${id}`, options)
+    axios.patch(`/api/ingredients/timeLine/${id}`, options)
       .then((data) => console.log(data, ' saved'))
+      .catch((err) => console.log(err));
+  }
+
+  const updateIngredientAmount = (id, amt, measureType) => {
+    const options = {
+      amount: amt,
+      measure: measureType
+    }
+    axios.patch(`/api/ingredients/amount/${id}`, options)
+      .then((data) => console.log(data, ' updated'))
       .catch((err) => console.log(err));
   }
 
@@ -85,7 +95,7 @@ function App() {
       </TitleWrapper>
       <AvailableIngredientsWrapper>
         <IngredientList availIngredients={availIngredients} saveNewIngredient={saveNewIngredient}
-        updateIngredientTimeLine={updateIngredientTimeLine} />
+        updateIngredientTimeLine={updateIngredientTimeLine} updateIngredientAmount={updateIngredientAmount} />
       </AvailableIngredientsWrapper>
     <AvailableRecipesWrapper>
       <AvailableRecipes availRecipes={availRecipes} getRecipeDetails={getRecipeDetails}

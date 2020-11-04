@@ -5,7 +5,7 @@ import SetTimeModal from './SetTimeModal.jsx';
 import ManualUpdateModal from './ManualUpdateModal.jsx';
 import styled from 'styled-components';
 
-const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
+const Ingredient = ({ ingredient, updateIngredientTimeLine, updateIngredientAmount }) => {
   const [showTimeModal, setShowTimeModal] = useState(false);
   const [showManualModal, setShowManualModal] = useState(false);
 
@@ -24,7 +24,7 @@ const Ingredient = ({ ingredient, updateIngredientTimeLine }) => {
         setShowTimeModal={setShowTimeModal} updateIngredientTimeLine={updateIngredientTimeLine} />
         {showTimeModal ? <PageMask /> : null}
         <ManualUpdateModal showManualModal={showManualModal} setShowManualModal={setShowManualModal}
-        ingredient={ingredient} />
+        ingredient={ingredient} updateIngredientAmount={updateIngredientAmount} />
         {showManualModal ? <PageMask /> : null}
       </div>
     )

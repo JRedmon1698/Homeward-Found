@@ -62,7 +62,7 @@ app.post('/api/ingredients', (req, res) => {
     .catch((err) => res.send(err));
 });
 
-app.patch('/api/ingredients/:id', (req, res) => {
+app.patch('/api/ingredients/timeLine/:id', (req, res) => {
   const { id } = req.params;
   const { qualifier } = req.body.timeLine;
   const { amount } = req.body.timeLine;
@@ -77,6 +77,19 @@ app.patch('/api/ingredients/:id', (req, res) => {
   Ingredient.findByIdAndUpdate(id, options, { new: true })
     .then((addition) => res.send(addition))
     .catch((err) => res.send(err));
+});
+
+app.patch('/api/ingredients/amount/:id', (req, res) => {
+  const { id } = req.params;
+  const { amount } = req.body;
+  const { measure } = req.body;
+  const options = {
+    amount,
+    measure
+  }
+  Ingredient.findByIdAndUpdate(id, options, { new: true })
+    .then((update) => res.send(update))
+    .catch((err) => console.log(err));
 });
 
 app.listen(PORT, () => {

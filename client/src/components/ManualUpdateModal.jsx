@@ -2,20 +2,46 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const ManualUpdateModal = ({
-  showManualModal, setshowManualModal, ingredient
+  showManualModal, setShowManualModal, ingredient, updateIngredientAmount
 }) => {
+  const [newIngredientAmount, setNewIngredientAmount] = useState(ingredient.amount);
+  const [newIngredientMeasure, setNewIngredientMeasure] = useState(ingredient.measure);
+
   if (!showManualModal) {
     return null;
   }
+
   return (
     <div>
       <Modal>
-        manual
-        <Save>Save</Save> <Cancel>Cancel</Cancel>
+        Update Available Ingredient Amount
+        <Amount placeholder={ingredient.amount} onChange={(e) => {
+          setNewIngredientAmount(e.target.value);
+        }}></Amount>
+        Update Available Ingredient Measurement Type
+        <Measurement placeholder={ingredient.measure} onChange={(e) => {
+          setNewIngredientMeasure(e.target.value);
+        }}></Measurement>
+        <Save onClick={() => {
+          updateIngredientAmount(ingredient._id, newIngredientAmount, newIngredientMeasure);
+          setShowManualModal(false);
+        }}>Save</Save> <Cancel onClick={() => {
+          setShowManualModal(false);
+        }}>Cancel</Cancel>
       </Modal>
     </div>
   );
 }
+
+const Measurement = styled.input`
+  height: 15px;
+  width: 100px;
+`;
+
+const Amount = styled.input`
+height: 15px;
+width: 20px;
+`;
 
 const Save = styled.button`
   border-radius: 7px;
