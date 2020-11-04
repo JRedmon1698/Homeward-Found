@@ -78,7 +78,7 @@ function App() {
   }
 
   const useIngredient = (id) => {
-    axios.patch(`/api/ingredients/useAmount/${id}`, options)
+    axios.patch(`/api/ingredients/useAmount/${id}`)
       .then((data) => console.log('Ingredient auto-used'))
       .catch((err) => console.log(err));
   }

@@ -99,9 +99,15 @@ app.patch('/api/ingredients/useAmount/:id', (req, res) => {
       amount: -1
     }
   }
-  Ingredient.findByIdAndUpdate(id, options, { new: true })
-    .then((data) => res.send(data))
-    .catch((err) => res.send(err));
+  Ingredient.findOne({ _id: id })
+    .then((data) => {
+      if (data.amount > 0) {
+        Ingredient.findByIdAndUpdate(id, options, { new: true })
+          .then((data) => res.send(data))
+      }
+      res.status(412).send(data);
+    })
+    .catch((err) => console.log(err));
 });
 
 app.listen(PORT, () => {
