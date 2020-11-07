@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+Although not necessary to use Homeward-Bound, if you want to get the most out of this app you should go to https://spoonacular.com/food-api and get a developer key. Once you get your developer key, copy `spoonacular.config.example.js`, rename to `spoonacular.config.js`, and replace `YOUR_API_KEY` with your key. This file will be ignored when pushing to github. 
+
 To install package dependancies:
   `npm install`
 
