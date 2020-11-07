@@ -99,9 +99,9 @@ function App() {
     }
   }
 
-  // useEffect(() => {
-  //   getAvailRecipes(availIngredients);
-  // }, [availIngredients]);
+  useEffect(() => {
+    getAvailRecipes(availIngredients);
+  }, [availIngredients]);
 
   useEffect(() => {
     getAvailIngredients()
