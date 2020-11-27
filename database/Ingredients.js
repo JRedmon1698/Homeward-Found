@@ -9,7 +9,7 @@ const ingredientSchema = new mongoose.Schema({
   timeLine: {
     qualifier: String,
     amount: Number
-  }
+  },
 });
 
 // const recipeSchema = new mongoose.Schema({

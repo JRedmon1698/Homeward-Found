@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Ingredient from './Ingredient.jsx';
-import shelves from '../images/emptyshelves.png';
+// import shelves from '../images/emptyshelves.png';
 
 function IngredientList({ 
   availIngredients, saveNewIngredient, updateIngredientTimeLine, updateIngredientAmount, autoUseIngredient 
@@ -13,22 +13,22 @@ function IngredientList({
 
   const handleSubmit = (ingredient) => {
     saveNewIngredient(ingredient);
-  }
+  };
 
   const handleNameChange = (e) => {
     setNewIngredientName(e.target.value);
     e.preventDefault();
-  }
+  };
 
   const handleAmountChange = (e) => {
     setNewIngredientAmount(e.target.value);
     e.preventDefault();
-  }
+  };
 
   const handleMeasureChange = (e) => {
     setNewIngredientMeasure(e.target.value);
     e.preventDefault();
-  }
+  };
 
   return (
     <div>
@@ -79,8 +79,8 @@ function IngredientList({
       </NewIngredientWrapper>
       </form>
       </div >
-  )
-}
+  );
+};
 
 const ClockParagraph = styled.div`
   margin-left: 15px;

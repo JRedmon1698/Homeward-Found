@@ -15,7 +15,7 @@ const RecipeDetails = ({ recipeDetails, setDetailsView }) => {
       <Back onClick={() => setDetailsView(false)}>Back</Back>
     </div>
   );
-} 
+};
 
 const Back = styled.button`
   cursor: pointer;

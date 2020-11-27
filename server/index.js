@@ -39,11 +39,10 @@ app.get('/api/recipe/details/:id', (req, res) => {
   let reqUrl = `${url}/recipes/${id}/analyzedInstructions?apiKey=${key}`
   axios(reqUrl)
     .then(({ data }) => res.send(data))
-    .catch((err) => console.log('err'));
+    .catch((err) => console.log(err));
 });
 
 app.get('/api/ingredients', (req, res) => {
-  // console.log(Ingredient);
   Ingredient.find()
     .then((data) => res.send(data))
     .catch((err) => console.log(err)); 
@@ -96,7 +95,7 @@ app.patch('/api/ingredients/useAmount/:id', (req, res) => {
   const { id } = req.params;
   const options = {
     $inc: {
-      amount: -1
+      amount: -1,
     }
   }
   Ingredient.findOne({ _id: id })

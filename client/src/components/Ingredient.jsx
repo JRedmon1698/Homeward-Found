@@ -17,12 +17,12 @@ const Ingredient = ({
       <div>
         <span>
           {ingredient.name}: {ingredient.amount} {ingredient.measure}
-          <AccessAlarmsSharpIcon color='primary' onClick={() => {
+          <Clock><AccessAlarmsSharpIcon color='primary' onClick={() => {
             setShowTimeModal(true);
-          }}></AccessAlarmsSharpIcon>
-          <BuildIcon color='primary' onClick={() => {
+          }}></AccessAlarmsSharpIcon></Clock>
+          <Wrench><BuildIcon color='primary' onClick={() => {
             setShowManualModal(true);
-          }}></BuildIcon>
+          }}></BuildIcon></Wrench>
         </span>
         <SetTimeModal ingredient={ingredient} showTimeModal={showTimeModal} 
         setShowTimeModal={setShowTimeModal} updateIngredientTimeLine={updateIngredientTimeLine} />
@@ -31,15 +31,21 @@ const Ingredient = ({
         ingredient={ingredient} updateIngredientAmount={updateIngredientAmount} />
         {showManualModal ? <PageMask /> : null}
       </div>
-    )
-}
+    );
+};
 
-const Clock = styled.div`
+const Clock = styled.button`
   cursor: pointer;
+  background-color: white;
+  padding: 0px;
+  border: none;
 `;
 
-const Wrench = styled.div`
-  cursor: pointer;
+const Wrench = styled.button`
+cursor: pointer;
+background-color: white;
+padding: 0px;
+border: none;
 `;
 
 const PageMask = styled.div`

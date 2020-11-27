@@ -31,7 +31,7 @@ const ManualUpdateModal = ({
       </Modal>
     </div>
   );
-}
+};
 
 const Measurement = styled.input`
   height: 15px;

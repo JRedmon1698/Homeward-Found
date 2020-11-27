@@ -11,6 +11,7 @@ const SetTimeModal = ({
   if (!showTimeModal) {
     return null;
   }
+  
   return (
     <div>
       <Modal>
@@ -33,7 +34,7 @@ const SetTimeModal = ({
       </Modal>
     </div>
   );
-}
+};
 
 const Save = styled.button`
   border-radius: 7px;

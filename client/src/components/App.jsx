@@ -21,7 +21,7 @@ function App() {
     })
       .then(({ data }) => console.log('saved', data))
       .catch((err) => console.log(err));
-  }
+  };
 
   const getAvailIngredients = () => {
     axios.get('/api/ingredients')
@@ -35,7 +35,7 @@ function App() {
         setAvailIngredients(ingredients);
       })
       .catch((err) => console.log(err));
-  }
+  };
 
   const getAvailRecipes = (ingredients) => {
     let ingredientStr = '';
@@ -47,36 +47,36 @@ function App() {
     axios.get(`/api/recipes/${ingredientStr}`)
       .then(({ data }) => setAvailRecipes(data))
       .catch((err) => console.log(err));
-  }
+  };
 
   const getRecipeDetails = (id) => {
     axios.get(`/api/recipe/details/${id}`)
       .then(({ data }) => setRecipeDetails(data[0].steps))
       .catch((err) => console.log(err));
-  }
+  };
 
   const updateIngredientTimeLine = (id, qual, amt) => {
     const options = {
       timeLine: {
         qualifier: qual,
-        amount: amt
-      }
-    }
+        amount: amt,
+      },
+    };
     axios.patch(`/api/ingredients/timeLine/${id}`, options)
       .then((data) => console.log(data, ' saved'))
       .catch((err) => console.log(err));
-  }
+  };
 
   const updateIngredientAmount = (id, amt, measureType) => {
     console.log(id, amt, measureType);
     const options = {
       amount: amt,
-      measure: measureType
-    }
+      measure: measureType,
+    };
     axios.patch(`/api/ingredients/amount/${id}`, options)
       .then((data) => console.log(data, ' updated'))
       .catch((err) => console.log(err));
-  }
+  };
 
   const autoUseIngredient = (ingredients) => {
     let timeFrame;
@@ -94,18 +94,18 @@ function App() {
           axios.patch(`/api/ingredients/useAmount/${ingredient.id}`)
             .then((data) => console.log('Ingredient auto-used'))
             .catch((err) => console.log(err));
-        }, timeFrame)
+        }, timeFrame);
       }
     }
-  }
+  };
 
-  useEffect(() => {
-    getAvailRecipes(availIngredients);
-  }, [availIngredients]);
+  // useEffect(() => {
+  //   getAvailRecipes(availIngredients);
+  // }, [availIngredients]);
 
-  useEffect(() => {
-    getAvailIngredients()
-  }, [availIngredients]);
+  // useEffect(() => {
+  //   getAvailIngredients()
+  // }, [availIngredients]);
 
   useEffect(() => {
     autoUseIngredient(availIngredients);

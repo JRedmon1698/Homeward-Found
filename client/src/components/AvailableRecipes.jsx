@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import RecipeDetails from './RecipeDetails.jsx';
+// import RecipeDetails from './RecipeDetails.jsx';
 
 const AvailableRecipes = ({ availRecipes, getRecipeDetails, setDetailsView }) => {
 
