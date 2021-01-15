@@ -13,7 +13,7 @@ Install nodemon:
   `npm install nodemon`
 
 The module mounts to:
-  `<div id='app'></div>
+  `<div id='app'></div>`
 
 ## Scripts
 
